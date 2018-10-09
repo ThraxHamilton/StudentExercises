@@ -112,11 +112,14 @@ namespace StudentExercises {
 
 
 
-            // Console.WriteLine ($"{students.FirstName}");
-       
+           
+            // Loop over students
             foreach(Student student in students){
+                // Loop over exercises
                 foreach(Exercise exercise in exercises){
+                    // Loop over exercises again in order to match with previous loop
                     foreach(Exercise match in exercises){
+                        // If first exercise loop matches the second then write to console
                       if(exercise == match)
                       Console.WriteLine($"{student.StudentFirstName}"+" is working on "+ $"{exercise.ExerciseName}");
 

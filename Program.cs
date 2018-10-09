@@ -115,16 +115,15 @@ namespace StudentExercises {
             // Console.WriteLine ($"{students.FirstName}");
        
             foreach(Student student in students){
-                List<string> everything = new List<string>();
                 foreach(Exercise exercise in exercises){
-                    if(student.ContainsKey(exercise)){
-                        everything.Add(student, exercise)
+                    foreach(Exercise match in exercises){
+                      if(exercise == match)
+                      Console.WriteLine($"{student.StudentFirstName}"+" is working on "+ $"{exercise.ExerciseName}");
+
                     }
                 }
-                Console.WriteLine($"{student.StudentFirstName}" + $"{student.StudentLastName} is working on $"{exercises.ExerciseName})
             }
         }
         }
         
     }
-}

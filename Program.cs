@@ -38,6 +38,9 @@ namespace StudentExercises {
                 Cohort = Twenty6,
 
             };
+            // Add me to the student list inside Cohort.cs
+            Twenty7.studentsList.Add(Mike);
+
             Student John = new Student () {
                 StudentFirstName = "John",
                 StudentLastName = "Wood",
@@ -45,6 +48,9 @@ namespace StudentExercises {
                 Cohort = Twenty8,
 
             };
+            // Add to 28
+            Twenty8.studentsList.Add(John);
+
             Student Dez = new Student () {
                 StudentFirstName = "Desmond",
                 StudentLastName = "N`uts",
@@ -52,6 +58,8 @@ namespace StudentExercises {
                 Cohort = Twenty7,
 
             };
+            Twenty7.studentsList.Add(Dez);
+
             Student Bob = new Student () {
                 StudentFirstName = "Bob",
                 StudentLastName = "Saggett",
@@ -59,12 +67,16 @@ namespace StudentExercises {
                 Cohort = Twenty6,
 
             };
+            Twenty6.studentsList.Add(Bob);
+
             Student Sonny = new Student () {
                 StudentFirstName = "Sonny",
                 StudentLastName = "Cheeba",
                 StudentSlackId = "@Cheeba",
                 Cohort = Twenty6,
             };
+            Twenty6.studentsList.Add(Sonny);
+
 
             // Create instructors
             Instructor Meg = new Instructor () {
@@ -94,6 +106,7 @@ namespace StudentExercises {
             // Give students assignments from instructors
             Meg.GiveAssignment (LittleDebbie, Mike);
             Meg.GiveAssignment (Probes, Mike);
+            Meg.GiveAssignment (Nutshell, Mike);
 
             Brenda.GiveAssignment (LittleDebbie, John);
             Brenda.GiveAssignment (Nutshell, John);
@@ -157,11 +170,23 @@ namespace StudentExercises {
             foreach(Student lastname in byLastName){
                 // Console.WriteLine(lastname.StudentLastName);
             }
-
+            // Students with no work to do
             List<Student> noWork = students.Where(work => work.StudentExercises.Count==0).ToList();
             foreach(Student student in noWork){
-                Console.WriteLine(student.StudentFirstName);
+                // Console.WriteLine(student.StudentFirstName);
             }
+            // Who has the most assignments
+            List<Student> mostWork = students.Where(most => most.StudentExercises.Count>2).ToList();
+            foreach(Student stu in mostWork){
+                // Console.WriteLine(stu.StudentFirstName);
+            }
+
+            // How many students in each cohort
+            foreach (Cohort coh in cohorts){
+                Console.WriteLine(coh.studentsList.Count);
+            }
+
+
 
 
 

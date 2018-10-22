@@ -1,0 +1,12 @@
+@"CREATE TABLE `Instructor` (
+                        `Id` INTEGER PRIMARY KEY AUTOINCREMENT,
+                        `InstFirstName` TEXT NOT NULL,
+                        `InstLastName` TEXT NOT NULL,
+                        `InstSlackHandle` TEXT NOT NULL,
+                        `InstCohort` TEXT NOT NULL,
+                        `Exercises` TEXT NOT NULL
+                    )"
+
+
+                     INSERT INTO Instructor (InstFirstName, InstLastName, InstSlackHandle, InstCohort, Exercises) VALUES ('Meg', 'Ducharme', '@meg', '27');
+                    "

@@ -218,15 +218,24 @@ namespace StudentExercises {
             
             SqliteConnection NewConnection = DatabaseInterface.NewConnection;
             DatabaseInterface.CheckExerciseTable();
-
+            DatabaseInterface.CheckInstTable();
+            // List all exercises
             // IEnumerable<Exercise> newExerciseList = NewConnection.Query<Exercise>(@"SELECT * from Exercise");
             // exercises.ForEach(ex => Console.WriteLine($"{ex.ExerciseName}"));
+
+            // Query all exercises in JavaScript
             NewConnection.Query<Exercise>(@"
                 SELECT * FROM Exercise
                 where Exercise.Language == 'JavaScript'
             ")
-            .ToList()
-            .ForEach(jsex => Console.WriteLine($"{jsex.ExerciseName}"));
+            .ToList();
+            // .ForEach(jsex => Console.WriteLine($"{jsex.ExerciseName}"));
+            // Insert new exercise into database
+            // NewConnection.Execute (@"
+            // INSERT INTO Exercise (ExerciseName, Language) VALUES ('Student Exercises', 'C#')");
+
+            // IEnumerable<Instructor> insCoh = NewConnection.Query<Instructor>(@"SELECT * FROM Instructor");
+            // instructors.ForEach(ins => Console.WriteLine($"{ins.InstFirstName} {ins.InstCohort}"));
 
         }
 

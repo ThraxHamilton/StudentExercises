@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Data.Sqlite;
+using System.Text;
+using Dapper;
+using StudentExercises.Data;
+using StudentExercises;
 
 namespace StudentExercises {
     class Program {
@@ -183,7 +188,7 @@ namespace StudentExercises {
 
             // How many students in each cohort
             foreach (Cohort coh in cohorts){
-                Console.WriteLine(coh.studentsList.Count);
+                // Console.WriteLine(coh.studentsList.Count);
             }
 
 
@@ -208,7 +213,24 @@ namespace StudentExercises {
                     }
                 }
             }
+
+
+            
+            SqliteConnection NewConnection = DatabaseInterface.NewConnection;
+            DatabaseInterface.CheckExerciseTable();
+
+            // IEnumerable<Exercise> newExerciseList = NewConnection.Query<Exercise>(@"SELECT * from Exercise");
+            // exercises.ForEach(ex => Console.WriteLine($"{ex.ExerciseName}"));
+            NewConnection.Query<Exercise>(@"
+                SELECT * FROM Exercise
+                where Exercise.Language == 'JavaScript'
+            ")
+            .ToList()
+            .ForEach(jsex => Console.WriteLine($"{jsex.ExerciseName}"));
+
         }
+
+
     }
 
 }
